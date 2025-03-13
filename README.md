@@ -1,5 +1,3 @@
-# quantum_database_theory
-
 # Quantum Database Theory
 
 ## Introduction
