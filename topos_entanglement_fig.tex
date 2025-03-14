@@ -1,0 +1,41 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, backgrounds}
+
+\begin{document}
+\begin{tikzpicture}[font=\small, node distance=2cm]
+
+% Styles
+\tikzset{
+  context/.style={
+    ellipse,
+    draw,
+    thick,
+    minimum width=2.8cm,
+    minimum height=2cm,
+    align=center
+  },
+  entline/.style={
+    thick,
+    decorate,
+    decoration={snake, amplitude=1.5pt}
+  }
+}
+
+% Context circles (for local presheaves or measurement contexts)
+\node[context] (c1) {Context\\$C_1$};
+\node[context, right=2cm of c1] (c2) {Context\\$C_2$};
+\node[context, below right=1cm and -0.5cm of c1] (c3) {Context\\$C_3$};
+
+% Overlapping is done so that c2 partially overlaps with c1, and c3 is below them.
+
+% Add "entanglement lines" between contexts
+\draw[entline] (c1) -- (c2) node[midway, above] {Entanglement};
+\draw[entline] (c1) -- (c3) node[midway, left] {Entanglement};
+\draw[entline] (c2) -- (c3) node[midway, right] {Entanglement};
+
+% A dashed circle around them for "Global Section"
+\node[draw, dashed, circle, fit=(c1)(c2)(c3), label=above:{Global Section}, inner sep=0.6cm] {};
+
+\end{tikzpicture}
+\end{document}

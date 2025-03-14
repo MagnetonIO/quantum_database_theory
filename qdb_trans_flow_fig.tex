@@ -1,0 +1,35 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, shapes, positioning}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5, transform shape, font=\footnotesize,
+  block/.style={
+    rectangle,
+    draw,
+    align=center,
+    rounded corners,
+    minimum width=2.5cm,
+    minimum height=0.9cm
+  },
+  line/.style={-{Latex[length=2mm]}, thick},
+  node distance=1.5cm
+  ]
+  
+% Nodes arranged horizontally
+\node[block] (start) {Transaction Request};
+\node[block, right=of start] (entreq) {1. Entanglement\\Request/Setup};
+\node[block, right=of entreq] (ops) {2. Local\\Quantum Ops};
+\node[block, right=of ops] (measure) {3. Measurement/\\Partial Collapse};
+\node[block, right=of measure] (classical) {4. Classical\\Commit/Abort};
+\node[block, right=of classical, fill=black!10] (end) {End Transaction};
+
+% Arrows connecting nodes horizontally
+\draw[line] (start) -- (entreq);
+\draw[line] (entreq) -- (ops);
+\draw[line] (ops) -- (measure);
+\draw[line] (measure) -- (classical);
+\draw[line] (classical) -- (end);
+
+\end{tikzpicture}
+\end{document}
